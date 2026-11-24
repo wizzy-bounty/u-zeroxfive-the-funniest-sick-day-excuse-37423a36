@@ -15,8 +15,12 @@ ENTRY_TEXT = (
 
 OUTPUT_PATH = "/output/entry.txt"
 
+# The competition gate accepts 1 to 200 characters; stay inside it.
+MAX_ENTRY_CHARS = 200
+
 
 def main() -> None:
+    assert 0 < len(ENTRY_TEXT) <= MAX_ENTRY_CHARS, "entry text out of gate bounds"
     os.makedirs(os.path.dirname(OUTPUT_PATH), exist_ok=True)
     with open(OUTPUT_PATH, "w", encoding="utf-8") as fh:
         fh.write(ENTRY_TEXT)
